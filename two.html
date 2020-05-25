@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      display: grid;
+      grid-template: repeat(4, 300px) / repeat(1, 1fr);
+      gap: 10px;
+    }
+
+    .container>div {
+      background-color: cornflowerblue;
+    }
+
+    #box1 {
+      width: 200px;
+      height: 200px;
+      background-color: darkcyan;
+    }
+
+    #box2 {
+      width: 200px;
+      height: 150px;
+      background-color: fuchsia;
+    }
+
+    #box3 {
+      width: 172px;
+      height: 200px;
+      background: khaki;
+    }
+    #box4 {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+
+  <script>
+    function setColor(color) {
+      var box = document.getElementById('box1');
+      box.style.backgroundColor = color;
+    }
+
+    function setBox(name, value) {
+      var box = document.getElementById('box2');
+      box.style[name] = value;
+    }
+    // js 写在head里并等待页面加载完成后再执行
+    window.onload = function () {
+      // 提取文字
+      var b_btn = document.getElementById('btn');
+      var b_txt = document.getElementById('txt');
+      var b_box = document.getElementById('box3');
+      b_btn.onclick = function () {
+        b_box.innerHTML = b_txt.value;
+      }
+
+      // 全选、不选与反选
+      var oBtn1 = document.getElementById('btn1');
+      var oBtn2 = document.getElementById('btn2');
+      var oBtn3 = document.getElementById('btn3');
+      var oBox4 = document.getElementById('box4');
+      var aCh = oBox4.getElementsByTagName('input');
+
+      oBtn1.onclick = function () {
+        for (var i = 0; i < aCh.length; i++) {
+          aCh[i].checked = true;
+        }
+      };
+      oBtn2.onclick = function () {
+        for (var i = 0; i < aCh.length; i++) {
+          aCh[i].checked = false;
+        }
+      };
+      oBtn3.onclick = function () {
+        for (var i = 0; i < aCh.length; i++) {
+          if (aCh[i].checked == true) {
+            aCh[i].checked = false;
+          } else aCh[i].checked = true;
+
+        }
+      };
+
+    };
+
+
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div>
+      <input type="button" value="Green" onclick="setColor('green')">
+      <input type="button" value="Red" onclick="setColor('red')">
+      <input type="button" value="Yellow" onclick="setColor('yellow')">
+      <div id="box1"></div>
+    </div>
+
+    <div>
+      <input type="button" value="变宽" onclick="setBox('width', '250px')">
+      <input type="button" value="变高" onclick="setBox('height', '250px')">
+      <input type="button" value="变紫" onclick="setBox('background', 'purple')">
+      <div id="box2"></div>
+    </div>
+
+    <div>
+      <input type="text" id="txt">
+      <input type="button" value="提取文字" id="btn">
+      <div id="box3"></div>
+    </div>
+    <!-- js 写在body里的相关代码下边 -->
+    <!-- 1 -->
+    <!-- <script>
+      var b_btn = document.getElementById('btn');
+        var b_txt = document.getElementById('txt');
+      var b_box = document.getElementById('box3');
+      b_btn.onclick = function () {
+        b_box.innerHTML = b_txt.value;
+      }
+    </script> -->
+    <!-- 上边与下边功能相同 -->
+    <!-- <script>
+      function getTxt() {
+        var b_txt = document.getElementById('txt');
+        var b_box = document.getElementById('box3');
+        b_box.innerHTML = b_txt.value;
+      }
+      var b_btn = document.getElementById('btn');
+      b_btn.onclick = getTxt;
+    </script> -->
+
+    <div>
+      <input type="button" value="全选" id="btn1">
+      <input type="button" value="不选" id="btn2">
+      <input type="button" value="反选" id="btn3">
+      <div id="box4">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+      </div>
+    </div>
+
+
+  </div>
+</body>
+
+</html>

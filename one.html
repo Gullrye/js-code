@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      display: grid;
+      grid-template-rows: repeat(4, 250px);
+      grid-gap: 5px;
+    }
+    .container > div {
+      background-color: cornflowerblue;
+    }
+    #box1 {
+      display: none;
+      width: 200px;
+      height: 200px;
+      background-color: gray;
+    }
+    #cell {
+      width: 100px;
+      height: 100px;
+      background-color: darkblue;
+    }
+    #content {
+      display: none;
+      width: 100px;
+      height: 200px;
+      background-color: darkgreen;
+    }
+  </style>
+  <script>
+    // 第一行
+    function toLeave() {
+      // getElementsByClassName 返回的是一个数组！
+      var box = document.getElementsByClassName('box1');
+      box[0].style.display = 'none';
+    }
+
+    // 第二行
+    function toGreen() {
+      var box = document.getElementById('cell');
+      box.style.backgroundColor = 'green';
+      box.style.width = '200px';
+      box.style.height = '200px';
+    }
+    function toRed() {
+      var box = document.getElementById('cell');
+      box.style.backgroundColor = 'red';
+      box.style.width = '100px';
+      box.style.height = '100px';
+    }
+
+    // 第三行
+    function textModify() {
+      var box = document.getElementById('font-wrap');
+      box.value = '你修改了这里的文字';  // 这里不用 style 了
+    }
+
+    // 第四行
+    function showMore() {
+      var box = document.getElementById('content');
+      if (box.style.display == 'none') {
+        box.style.display = 'block';
+      } else {
+        box.style.display = 'none';
+      }
+    }
+
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <!-- 第一行 --> 
+    <div>
+      <input type="checkbox" onmouseover="document.getElementById('box1').style.display='block';"
+        onmouseout="toLeave()" />
+      <div id="box1" class="box1">你们好呀！</div>
+    </div>
+    <!-- 第二行 -->
+    <div>
+      <div id="cell" onmouseover="toGreen()" onmouseout="toRed()"></div>
+    </div>
+    <!-- 第三行 -->
+    <div>
+      <input type="text" id="font-wrap">
+      <input type="button" id="button" value="提交" onclick="textModify()">
+    </div>
+    <!-- 第四行 -->
+    <div>
+      <button onclick="showMore()">更多内容</button>
+      <div id="content"></div>
+    </div>
+
+  </div>
+</body>
+
+</html>
