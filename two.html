@@ -8,7 +8,7 @@
   <style>
     .container {
       display: grid;
-      grid-template: repeat(4, 300px) / repeat(1, 1fr);
+      grid-template-rows: repeat(5, 300px);
       gap: 10px;
     }
 
@@ -33,9 +33,21 @@
       height: 200px;
       background: khaki;
     }
+
     #box4 {
       display: flex;
       flex-direction: column;
+    }
+
+    .show {
+      display: none;
+      width: 200px;
+      height: 200px;
+      background: #aad3ac;
+    }
+
+    .active {
+      background: #7260d4;
     }
   </style>
 
@@ -84,6 +96,23 @@
 
         }
       };
+
+      // 选项卡
+      var btnWrap = document.getElementById('btn-wrap');
+      var showBtns = btnWrap.getElementsByTagName('input');
+      var showBoxes = document.getElementsByClassName('show');
+      for (var i = 0; i < showBtns.length; i++) {
+        showBtns[i].index = i;
+        showBtns[i].onclick = function () {
+          for (var j = 0; j < showBoxes.length; j++) {
+            showBtns[j].className = '';
+            showBoxes[j].style.display = 'none';
+          }
+          this.className = 'active';
+          showBoxes[this.index].style.display = 'block';
+        };
+      }
+
 
     };
 
@@ -153,8 +182,20 @@
       </div>
     </div>
 
+    <div>
+      <div id="btn-wrap">
+        <input type="button" value="文章">
+        <input type="button" value="新闻">
+        <input type="button" value="网站">
+        <input type="button" value="数字">
+      </div>
+      <div class="show" style="display: block;">床前明月光</div>
+      <div class="show">震惊！</div>
+      <div class="show">Xxx.com</div>
+      <div class="show">1 + 100 = 101</div>
+    </div>
 
-  </div>
+
 </body>
 
 </html>
