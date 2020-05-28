@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function toDou(n) {
+      if (n < 10) {
+        return '0' + n;
+      } else {
+        return '' + n;
+      }
+    }
+
+    window.onload = function () {
+      var numWrap = document.getElementById('wrap');
+      var aNum = numWrap.getElementsByTagName('img');
+
+      // 取当前时间的数字转换为对应的图片
+      function tick() {
+        // 取当前时间并组成一个字符串
+        var oDate = new Date();
+        var str = toDou(oDate.getHours()) + toDou(oDate.getMinutes()) + toDou(oDate.getSeconds());
+
+        for (var i = 0; i < aNum.length; i++) {
+          // 用 charAt 来取时间字符串中相应的数字
+          aNum[i].src = 'img/' + str.charAt(i) + '.png';
+        }
+      }
+      setInterval(tick, 1000);
+      tick();   
+    };
+  </script>
+</head>
+
+<body>
+  <div id="wrap">
+    <img src="img/0.png" alt="">
+    <img src="img/0.png" alt="">
+    :
+    <img src="img/0.png" alt="">
+    <img src="img/0.png" alt="">
+    :
+    <img src="img/0.png" alt="">
+    <img src="img/0.png" alt="">
+
+  </div>
+</body>
+
+</html>
