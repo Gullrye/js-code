@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #wrap {
+      overflow: hidden;
+    }
+
+    #profile {
+      float: left;
+      width: 50px;
+      height: 50px;
+      margin: 20px;
+      border: 1px solid seagreen;
+      border-radius: 50%;
+    }
+
+    #profile img {
+      width: 100%;
+      border-radius: 50%;
+    }
+
+    #infor {
+      float: left;
+      width: 150px;
+      height: 150px;
+      padding: 10px;
+      font-size: 14px;
+      color: #eee;
+      background: cadetblue;
+    }
+  </style>
+
+  <script>
+    window.onload = function () {
+      var myProfile = document.getElementById('profile');
+      var myInfor = document.getElementById('infor');
+      var timer = null;
+
+      // myProfile.onmouseover = function () {
+      //   clearTimeout(timer);
+      //   myInfor.style.display = 'block';
+      // };
+      // myProfile.onmouseout = function () {
+      //   timer = setTimeout(function () {
+      //   myInfor.style.display = 'none';
+      //   }, 100);
+      // };
+      // myInfor.onmouseover = function () {
+      //   clearTimeout(timer);
+      //   myInfor.style.display = 'block';
+      // };
+      // myInfor.onmouseout = function () {
+      //   timer = setTimeout(function () {
+      //   myInfor.style.display = 'none';
+      //   }, 100);
+      // };
+
+      myProfile.onmouseover = myInfor.onmouseover = function () {
+        clearTimeout(timer);
+        myInfor.style.display = 'block';
+      };
+      myProfile.onmouseout = myInfor.onmouseout = function () {
+        // setTimeout()：在指定的毫秒数后调用函数或计算表达式
+        timer = setTimeout(function () {
+        myInfor.style.display = 'none';
+        }, 100);
+      };
+
+    };  
+  </script>
+</head>
+
+<body>
+  <div id="wrap">
+    <div id="profile">
+      <img src="img/profile.jpg" alt="">
+    </div>
+    <div id="infor" style="display: none;">
+      <p>Hello! I am ...</p>
+      <p>Nice to meet you!</p>
+    </div>
+  </div>
+</body>
+
+</html>
