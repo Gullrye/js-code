@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+
+    window.onload = function () {
+      var myBtn = document.getElementById('btn');
+      var myText = document.getElementById('text');
+      var myUl = document.getElementsByTagName('ul');
+      myBtn.onclick = function () {
+        var myLi = document.createElement('li');
+        var myLis = document.getElementsByTagName('li');
+        myLi.innerHTML = myText.value;
+
+        // 将输入框中的内容添加到列表最前面
+        if (myLis.length > 0) {
+          myUl[0].insertBefore(myLi, myLis[0]);
+        }
+        else {
+          myUl[0].appendChild(myLi);
+        }
+      };
+    };
+
+  </script>
+
+</head>
+
+<body>
+  <input type="text" id="text">
+  <input type="button" value="添加文字项" id="btn">
+  <ul></ul>
+</body>
+
+</html>
