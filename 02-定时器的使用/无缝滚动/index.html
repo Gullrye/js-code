@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 1000px;
+      height: 200px;
+      margin: 100px auto 0;
+      background: mediumaquamarine;
+    }
+
+    .wrap {
+      position: relative;
+      overflow: hidden;
+      width: 950px;
+      height: 117.25px;
+      margin: 0 auto;
+    }
+
+    #card-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 950px;
+      height: 117.25px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .card {
+      float: left;
+      align-items: center;
+      width: 180px;
+      margin: 5px;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      box-shadow: 0 1px 1px #666;
+    }
+  </style>
+
+  <script>
+    window.onload = function () {
+      var cardBox = document.getElementById('card-box');
+      var cards = document.getElementsByClassName('card');
+      var cardWrap = document.getElementsByClassName('wrap');
+      var speed = -2;
+
+      function move() {
+        if (cardBox.offsetLeft < -cardBox.offsetWidth / 2) {
+          cardBox.style.left = '0';
+        }
+        if (cardBox.offsetLeft > 0) {
+          cardBox.style.left = -cardBox.offsetWidth / 2 + 'px';
+        }
+        cardBox.style.left = cardBox.offsetLeft + speed + 'px';
+      }
+
+      cardBox.innerHTML += cardBox.innerHTML;
+      cardBox.style.width = (cards[0].offsetWidth + 10) * cards.length + 'px';
+      timer = setInterval(move, 30);
+
+      document.getElementsByTagName('a')[0].onclick = function () {
+        speed = -2;
+      }
+      document.getElementsByTagName('a')[1].onclick = function () {
+        speed = 2;
+      }
+      
+      cardBox.onmouseover = function () {
+        clearInterval(timer);
+      }
+      cardBox.onmouseout = function () {
+        timer = setInterval(move, 30)
+      }
+    };
+
+  </script>
+</head>
+
+<body>
+  <a href="javascript:">Left</a>
+  <a href="javascript:">Right</a>
+  <div class="container">
+    <div class="wrap">
+      <ul id="card-box">
+        <li class="card"><img src="img/1.jpg" alt=""></li>
+        <li class="card"><img src="img/2.jpg" alt=""></li>
+        <li class="card"><img src="img/3.jpg" alt=""></li>
+        <li class="card"><img src="img/4.jpg" alt=""></li>
+        <li class="card"><img src="img/5.jpg" alt=""></li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>
