@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            position: absolute;
+            left: 600px;
+            top: 100px;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        #div2 {
+            position: absolute;
+            left: 100px;
+            top: 0;
+            width: 1px;
+            height: 500px;
+            background: black;
+        }
+
+        #div3 {
+            position: absolute;
+            left: 300px;
+            top: 0;
+            width: 1px;
+            height: 500px;
+            background: black;
+        }
+    </style>
+    <script>
+        var timer = null;
+
+        function startMove(iTarget) {
+            var oDiv = document.getElementById('div1');
+
+            clearInterval(timer);
+            timer = setInterval(function () {
+                var speed = 0;
+
+                if (oDiv.offsetLeft < iTarget) {
+                    speed = 7;
+                } else {
+                    speed = -7;
+                }
+
+                if (Math.abs(iTarget - oDiv.offsetLeft) <= 7) {
+                    clearInterval(timer);
+                    oDiv.style.left = iTarget + 'px';
+                } else { 
+                    oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+                    document.title = oDiv.offsetLeft;
+                }
+            }, 30);
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" value="到100" onclick="startMove(100)">
+    <input type="button" value="到300" onclick="startMove(300)">
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+</body>
+
+</html>
