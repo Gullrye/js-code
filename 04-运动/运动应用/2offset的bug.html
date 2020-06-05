@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #div1 {
+        border: 1px solid black;
+        width: 200px;
+        height: 200px;
+        background: red;
+    }
+</style>
+<script>
+    setInterval(function () {
+        var oDiv = document.getElementById('div1');
+
+        // offsetWidth = width + border + padding, width = offsetWidth, and then offsetWidth = width + border + padding again
+        // width=200px, offsetWidth=200px+2px(border);then, width=202px, offsetWidth=202+2px(border)=204px
+        oDiv.style.width = oDiv.offsetWidth - 1 + 'px';
+    }, 30);
+</script>
+
+<body>
+    <div id="div1"></div>
+</body>
+
+</html>
