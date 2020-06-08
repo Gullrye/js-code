@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="move.js"></script>
+    <script>
+        window.onload = function () {
+            var markLeft = document.getElementsByClassName('mark_left')[0];
+            var markRight = document.getElementsByClassName('mark_right')[0];
+            var btnPrev = document.getElementsByClassName('prev')[0];
+            var btnNext = document.getElementsByClassName('next')[0];
+            var smallPicDiv = document.getElementsByClassName('small_pic_div')[0];
+            var smallPic = document.getElementsByClassName('small_pic');
+            var bigPic = document.getElementsByClassName('big_pic');
+            var nowZIndex = 2;
+            var now = 0;
+            var container = document.getElementById('container');
+
+            // 左右按钮
+            btnPrev.onmouseover = markLeft.onmouseover = function () {
+                startMove(btnPrev, 'opacity', 100);
+            };
+            btnPrev.onmouseout = markLeft.onmouseout = function () {
+                startMove(btnPrev, 'opacity', 0);
+            };
+            btnNext.onmouseover = markRight.onmouseover = function () {
+                startMove(btnNext, 'opacity', 100);
+            };
+            btnNext.onmouseout = markRight.onmouseout = function () {
+                startMove(btnNext, 'opacity', 0);
+            };
+
+            // 点击小图切换大图
+            for (var i = 0; i < smallPic.length; i++) {
+
+                smallPic[i].index = i;
+
+                smallPic[i].onclick = function () {
+
+                    if (now == this.index) return;
+                    // 使用 now 来表示当前选择的小图，当前选中的小图点击时不会再次让大图下滑
+                    now = this.index;
+                    bigPic[this.index].style.zIndex = nowZIndex++;
+                    bigPic[this.index].style.height = 0;
+                    startMove(bigPic[this.index], 'height', 360);
+
+                    // 点击后其他小图变透明，当前选中的为不透明
+                    for (var i = 0; i < smallPic.length; i++) {
+                        startMove(smallPic[i], 'opacity', 60);
+                    }
+                    startMove(smallPic[this.index], 'opacity', 100);
+                };
+
+                // 小图淡入淡出
+                smallPic[i].onmouseover = function () {
+                    startMove(this, 'opacity', 100);
+                };
+                smallPic[i].onmouseout = function () {
+                    if (now != this.index) {
+                        startMove(this, 'opacity', 60);
+                    }
+                };
+
+            }
+
+
+            function tab() {
+                bigPic[now].style.zIndex = nowZIndex++;
+                for (var i = 0; i < smallPic.length; i++) {
+                    startMove(smallPic[i], 'opacity', 60);
+                }
+                startMove(smallPic[now], 'opacity', 100);
+
+                bigPic[now].style.height = 0;
+                startMove(bigPic[now], 'height', 360);
+
+                if (now == 0) {
+                    startMove(smallPicDiv, 'top', 0);
+                } else if (now == smallPic.length - 1) {
+                    startMove(smallPicDiv, 'top', -(now - 2) * (smallPic[0].offsetHeight + 15));
+                } else {
+                    startMove(smallPicDiv, 'top', -(now - 1) * (smallPic[0].offsetHeight + 15));
+                }
+            }
+
+            btnPrev.onclick = function () {
+                now--;
+                if (now == smallPic.length) {
+                    now = smallPic.length - 1;
+                } else if (now < 0) {
+                    now = 0;
+                    return;
+                }
+                tab();
+            };
+            btnNext.onclick = function () {
+                now++;
+                if (now == smallPic.length) {
+                    now = 0;
+                }
+                tab();
+            };
+            var timer = setInterval(btnNext.onclick, 3000);
+            container.onmouseover = function () {
+                clearInterval(timer);
+            };
+            container.onmouseout = function () {
+                timer = setInterval(btnNext.onclick, 3000);
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <div class="big_pic_div">
+            <div class="prev"></div>
+            <div class="next"></div>
+            <a href="javascript:;" class="mark_left"></a>
+            <a href="javascript:;" class="mark_right"></a>
+
+            <div class="big_pic" style="z-index: 1;"><img src="img/1.jpg" alt=""></div>
+            <div class="big_pic"><img src="img/2.jpg" alt=""></div>
+            <div class="big_pic"><img src="img/3.jpg" alt=""></div>
+            <div class="big_pic"><img src="img/4.jpg" alt=""></div>
+            <div class="big_pic"><img src="img/5.jpg" alt=""></div>
+            <div class="big_pic"><img src="img/6.jpg" alt=""></div>
+        </div>
+
+        <div class="small_pic_div">
+            <div class="small_pic" style="filter: opacity(100); opacity: 1;"><img src="img/1.jpg" alt=""></div>
+            <div class="small_pic"><img src="img/2.jpg" alt=""></div>
+            <div class="small_pic"><img src="img/3.jpg" alt=""></div>
+            <div class="small_pic"><img src="img/4.jpg" alt=""></div>
+            <div class="small_pic"><img src="img/5.jpg" alt=""></div>
+            <div class="small_pic"><img src="img/6.jpg" alt=""></div>
+        </div>
+    </div>
+</body>
+
+</html>

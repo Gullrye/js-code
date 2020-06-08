@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: skyblue;
+}
+
+#container {
+    position: relative;
+    overflow: hidden;
+    width: 350px;
+    height: 390px;
+    margin: 50px auto 0;
+    padding: 0 15px;
+    background: goldenrod;
+    box-shadow: 2px 1px 5px 1px #666;
+}
+
+.mark_left {
+    position: absolute;
+    left: 0;
+    z-index: 3000;
+    width: 65px;
+    height: 360px;
+}
+
+.mark_right {
+    position: absolute;
+    right: 0;
+    z-index: 3000;
+    width: 65px;
+    height: 360px;
+}
+
+.prev {
+    position: absolute;
+    top: 150px;
+    left: 5px;
+    z-index: 3001;
+    width: 60px;
+    height: 60px;
+    background: url(img/btn.gif) olivedrab;
+    /* transform: translateY(50%); */
+    /* alpha 兼容IE8及以下的IE浏览器 */
+    filter: alpha(opacity=0);
+    opacity: 0;
+}
+
+.next {
+    position: absolute;
+    top: 120px;
+    right: 5px;
+    z-index: 3001;
+    width: 60px;
+    height: 60px;
+    background: url(img/btn.gif) olivedrab;
+    background-position-y: 60px;
+    transform: translateY(50%);
+    filter: alpha(opacity=0);
+    opacity: 0;
+}
+
+.big_pic_div {
+    position: relative;
+    width: 250px;
+    height: 360px;
+    padding: 15px 0;
+}
+
+.big_pic {
+    position: absolute;
+    /* height 从 0 到 360px 下滑 */
+    overflow: hidden;
+    height: 360px;
+    box-shadow: 1px 1px 2px #777;
+}
+
+.small_pic_div {
+    display: grid;
+    grid-template: repeat(6, 110px) / 80px;
+    gap: 15px;
+    position: absolute;
+    top: 0;
+    left: 273px;
+    padding: 15px 0;
+}
+
+.small_pic {
+    filter: alpha(opacity = 60);
+    opacity: 0.6;
+    height: 110px;
+}
+
+.small_pic img {
+    width: 80px;
+    height: 100%;
+}
