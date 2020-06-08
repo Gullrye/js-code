@@ -85,9 +85,9 @@ body {
 }
 
 .small_pic {
+    height: 110px;
     filter: alpha(opacity = 60);
     opacity: 0.6;
-    height: 110px;
 }
 
 .small_pic img {

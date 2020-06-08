@@ -92,8 +92,8 @@
                 if (now == smallPic.length) {
                     now = smallPic.length - 1;
                 } else if (now < 0) {
-                    now = 0;
-                    return;
+                    now = smallPic.length - 1;
+                    // return;
                 }
                 tab();
             };
