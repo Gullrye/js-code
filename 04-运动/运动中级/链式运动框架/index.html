@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            filter: alpha(opacity = 30);
+            opacity: 0.3;
+        }
+    </style>
+    <script src="链式运动框架.js"></script>
+    <script>
+        window.onload = function () {
+            var div1 = document.getElementById('div1');
+
+            div1.onmouseover = function () {
+                startMove(this, 'width', 300, function () {
+                    startMove(div1, 'height', 300, function () {
+                        startMove(div1, 'opacity', 100);
+                    });
+                });
+            };
+            div1.onmouseout = function () {
+                startMove(this, 'opacity', 30, function () {
+                    startMove(div1, 'height', 100, function () {
+                        startMove(div1, 'width', 100);
+                    });
+                });
+            };
+        };
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>
