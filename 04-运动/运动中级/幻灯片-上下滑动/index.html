@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="move.js"></script>
+    <script>
+        window.onload = function () {
+            var container = document.getElementById('container');
+            var changeBtn = container.getElementsByTagName('ol')[0].getElementsByTagName('li');
+            var showPic = container.getElementsByTagName('ul')[0];
+            var now = 0;
+
+            for (var i = 0; i < changeBtn.length; i++) {
+                changeBtn[i].index = i;
+                changeBtn[i].onclick = function () {
+                    now = this.index;
+                    for (var i = 0; i < changeBtn.length; i++) {
+                        changeBtn[i].className = '';
+                    }
+                    changeBtn[now].className = 'active';
+                    startMove(showPic, {top: -360 * now});
+                };
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <ul>
+            <li><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.jpg" alt=""></li>
+            <li><img src="img/3.jpg" alt=""></li>
+            <li><img src="img/4.jpg" alt=""></li>
+            <li><img src="img/5.jpg" alt=""></li>
+            <li><img src="img/6.jpg" alt=""></li>
+        </ul>
+        <ol>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ol>
+    </div>
+</body>
+
+</html>

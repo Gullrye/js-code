@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    position: relative;
+    overflow: hidden;
+    width: 250px;
+    height: 360px;
+    margin: 10px auto;
+    border: 1px solid slateblue;
+}
+
+ul {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+}
+
+ul li {
+    height: 360px;
+}
+
+ul li img {
+    width: 100%;
+}
+
+ol {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    z-index: 9999;
+    list-style: none;
+}
+
+ol li {
+    float: left;
+    margin-right: 5px;
+    padding: 0 5px;
+    border: 1px solid seagreen;
+    color: slateblue;
+    background: skyblue;
+    cursor: pointer;
+}
+
+.active {
+    color: skyblue;
+    background: blue;
+}
