@@ -1,0 +1,23 @@
+#box {
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+    margin: 10px auto;
+    border: 2px solid skyblue;
+}  
+
+#box ul {
+    margin: 0;
+    padding: 0;
+}
+
+#box li {
+    overflow: hidden;
+    min-height: 15px;
+    padding: 4px;
+    color: #666;
+    list-style: none;
+    border-bottom: 1px dashed skyblue;
+    filter: alpha(opacity = 0);
+    opacity: 0;
+}

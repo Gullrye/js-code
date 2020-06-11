@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script src="move(more).js"></script>
+<script>
+    window.onload = function () {
+        var wbTxt = document.getElementById('txt');
+        var wbBtn = document.getElementById('btn');
+        var wbBox = document.getElementById('box');
+        var wbUl = wbBox.getElementsByTagName('ul');
+        var wbLi = wbUl[0].getElementsByTagName('li');
+
+        wbBtn.onclick = function () {
+            var newLi = document.createElement('li');
+            
+            if (wbLi.length > 0) {
+                newLi.innerHTML = wbTxt.value;
+                wbUl[0].insertBefore(newLi, wbUl[0].children[0]);
+                wbTxt.value = '';
+            } else {
+                wbUl[0].appendChild(newLi);
+            }
+
+            var liHeight = newLi.offsetHeight;
+            newLi.style.height = '0';
+            startMove(newLi, {height: liHeight}, function () {
+                startMove(newLi, {opacity: 100});
+            });
+            // test
+            // startMove(wbLi[0], {height: 100, margin: 100});
+        };
+    };
+</script>
+
+<body>
+    <textarea id="txt" cols="40" rows="4"></textarea>
+    <input type="button" value="提交" id="btn">
+    <div id="box">
+        <ul>
+        </ul>
+    </div>
+</body>
+
+</html>
