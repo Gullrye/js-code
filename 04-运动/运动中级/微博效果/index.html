@@ -19,10 +19,10 @@
         wbBtn.onclick = function () {
             var newLi = document.createElement('li');
             
-            if (wbLi.length > 0) {
-                newLi.innerHTML = wbTxt.value;
+            newLi.innerHTML = wbTxt.value;
+            wbTxt.value = '';
+            if (wbLi.length != 0) {
                 wbUl[0].insertBefore(newLi, wbUl[0].children[0]);
-                wbTxt.value = '';
             } else {
                 wbUl[0].appendChild(newLi);
             }
@@ -40,7 +40,7 @@
 
 <body>
     <textarea id="txt" cols="40" rows="4"></textarea>
-    <input type="button" value="提交" id="btn">
+    <input type="button" value="发布" id="btn">
     <div id="box">
         <ul>
         </ul>
