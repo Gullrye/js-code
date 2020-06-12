@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: skyblue;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            document.onmousemove = function () {
+                var ableEvent = event || ev;
+                var div1 = document.getElementById('div1');
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+
+                div1.style.left = event.clientX + scrollLeft + 'px';
+                div1.style.top = event.clientY + scrollTop +'px';
+
+            };
+        };
+    </script>
+</head>
+<body style="height: 2000px;">
+    <div id="div1"></div>
+</body>
+</html>

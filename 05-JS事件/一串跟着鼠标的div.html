@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: skyblue;
+        }
+    </style>
+    <script>
+        function getPos(ev) {
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+
+                return {x: scrollLeft + ev.clientX, y: scrollTop + ev.clientY};
+        }
+
+        window.onload = function () {
+            document.onmousemove = function () {
+                var ableEvent = event || ev;
+                var div1 = document.getElementById('div1');
+                var divs = document.getElementsByTagName('div');
+                var pos = getPos(ableEvent);
+
+                for (var i = divs.length - 1; i > 0; i--) {
+                    divs[i].style.top = divs[i - 1].offsetTop + 'px';
+                    divs[i].style.left = divs[i - 1].offsetLeft + 'px';
+                }
+
+                div1.style.left = pos.x + 'px';
+                div1.style.top = pos.y +'px';
+
+            };
+        };
+    </script>
+</head>
+<body style="height: 2000px;">
+    <div id="div1"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            display: none;
+            width: 400px;
+            height: 400px;
+            background: skyblue;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById('btn');
+            var div1 = document.getElementById('div1');
+
+            btn.onclick = function () {
+                var ableEvent = event || ev;
+
+                div1.style.display = 'block';
+                ableEvent.cancelBubble = true;
+            };
+
+            document.onclick = function () {
+                div1.style.display = 'none';
+            };
+        };
+    </script>
+</head>
+<body>
+    <input type="button" value="显示" id="btn">
+    <div id="div1">
+    </div>
+</body>
+</html>
