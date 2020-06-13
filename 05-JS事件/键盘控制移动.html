@@ -13,7 +13,17 @@
         }
     </style>
     <script>
-        
+        document.onkeydown = function (ev) {
+            var ableEvent = ev || event;
+            var div1 = document.getElementById('div1');
+
+            if (ableEvent.keyCode == 37) {
+                div1.style.left = div1.offsetLeft - 10 + 'px';
+            }
+            if (ableEvent.keyCode == 39) {
+                div1.style.left = div1.offsetLeft + 10 + 'px';
+            }
+        };
     </script>
 </head>
 <body>
