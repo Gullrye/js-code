@@ -10,6 +10,7 @@
             width: 20px;
             height: 20px;
             background: skyblue;
+            border-radius: 50%;
         }
     </style>
     <script>
@@ -21,7 +22,7 @@
         }
 
         window.onload = function () {
-            document.onmousemove = function () {
+            document.onmousemove = function (ev) {
                 var ableEvent = event || ev;
                 var div1 = document.getElementById('div1');
                 var divs = document.getElementsByTagName('div');
@@ -41,6 +42,16 @@
 </head>
 <body style="height: 2000px;">
     <div id="div1"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
     <div></div>
     <div></div>
     <div></div>

@@ -21,7 +21,7 @@
         }
 
         window.onload = function () {
-            document.onmousemove = function () {
+            document.onmousemove = function (ev) {
                 var ableEvent = event || ev;
                 var div1 = document.getElementById('div1');
                 var pos = getPos(ableEvent);

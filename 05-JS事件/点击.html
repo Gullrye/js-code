@@ -7,12 +7,12 @@
     <script>
         window.onload = function () {
             // document 包括此页所有代码，整个页面的事件
-            document.onclick = function () {
+            document.onclick = function (ev) {
                 // js 第二定律，但凡好用的，绝对不兼容
                 // alert(event.clientX + ', ' + event.clientY);
 
                 // 兼容写法
-                var ableEvent = event || ev;
+                var ableEvent = ev || event;
                 alert(ableEvent.clientX + ', ' + ableEvent.clientY);
             };
         };
