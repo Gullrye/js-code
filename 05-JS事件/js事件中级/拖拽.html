@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var div1 = document.getElementById('div1');
+            var disX = 0;
+            var disY = 0;
+
+            div1.onmousedown = function (ev) {
+                var ableEvent = ev || event;
+                disX = ableEvent.clientX - div1.offsetLeft;
+                disY = ableEvent.clientY - div1.offsetTop;
+
+                // 拖拽
+                document.onmousemove = function (ev) {
+                    var ableEvent = ev || event;
+                    var l = ableEvent.clientX - disX;
+                    var t = ableEvent.clientY - disY;
+
+                    // 限制在窗口内
+                    if (l < 0) {
+                        l = 0;
+                    } else if (l > document.documentElement.clientWidth - div1.offsetWidth) {
+                        l = document.documentElement.clientWidth - div1.offsetWidth;
+                    }
+
+                    if (t < 0) {
+                        t = 0;
+                    } else if (t > document.documentElement.clientHeight - div1.offsetHeight) {
+                        t = document.documentElement.clientHeight - div1.offsetHeight;
+                    }
+
+                    div1.style.left = l + 'px';
+                    div1.style.top = t + 'px';
+                };
+
+                document.onmouseup = function (ev) {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                };
+
+                return false;
+            };
+
+        };
+    </script>
+</head>
+
+<body>
+    <div id="div1"></div>
+</body>
+
+</html>
