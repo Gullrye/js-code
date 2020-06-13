@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #div1 {
+            display: none;
+            position: absolute;
+            width: 80px;
+            background: skyblue;
+            border: 1px solid seagreen;
+        }
+    </style>
+    <script>
+        document.oncontextmenu = function (ev) {
+            var ableEvent =ev || event;
+            var div1 = document.getElementById('div1');
+            
+            div1.style.display = 'block';
+            div1.style.left = ableEvent.clientX + 'px';
+            div1.style.top = ableEvent.clientY + 'px';
+
+            return false; // 阻止默认事件，屏蔽默认菜单
+        };
+
+        document.onclick = function () {
+            var div1 = document.getElementById('div1');
+
+            div1.style.display = 'none';
+        };
+    </script>
+</head>
+
+<body>
+    <div id="div1">
+        <ul>
+            <li>111</li>
+            <li>222</li>
+            <li>333</li>
+            <li>444</li>
+        </ul>
+    </div>
+</body>
+
+</html>
