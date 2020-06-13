@@ -15,7 +15,7 @@
     <script>
         window.onload = function () {
             document.onmousemove = function (ev) {
-                var ableEvent = event || ev;
+                var ableEvent = ev || event;
                 var div1 = document.getElementById('div1');
                 var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
                 var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;

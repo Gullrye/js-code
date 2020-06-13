@@ -23,7 +23,7 @@
 
         window.onload = function () {
             document.onmousemove = function (ev) {
-                var ableEvent = event || ev;
+                var ableEvent = ev || event;
                 var div1 = document.getElementById('div1');
                 var divs = document.getElementsByTagName('div');
                 var pos = getPos(ableEvent);

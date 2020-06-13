@@ -18,7 +18,7 @@
             var div1 = document.getElementById('div1');
 
             btn.onclick = function (ev) {
-                var ableEvent = event || ev;
+                var ableEvent = ev || event;
 
                 div1.style.display = 'block';
                 ableEvent.cancelBubble = true;
