@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById('btn');
+
+            if (btn.attachEvent) {
+                // btn.attachEvent(事件名, 函数)
+                // IE
+                btn.attachEvent('onclick', function () {
+                    alert('a');
+                });
+                btn.attachEvent('onclick', function () {
+                    alert('b');
+                });
+            } else {
+                // firefox, chrome (ie9是套着IE皮的火狐)
+                btn.addEventListener('click', function () {
+                    alert('a');
+                }, false);
+                btn.addEventListener('click', function () {
+                    alert('b');
+                }, false);
+            }
+
+
+
+        };
+    </script>
+</head>
+
+<body>
+    <input type="button" id="btn" value="show">
+</body>
+
+</html>

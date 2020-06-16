@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        #div2 {
+            position: relative;
+            width: 700px;
+            height: 400px;
+            background: gray;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var div1 = document.getElementById('div1');
+            var div2 = document.getElementById('div2');
+            var disX = 0;
+            var disY = 0;
+
+            div1.onmousedown = function (ev) {
+                var ableEvent = ev || event;
+                disX = ableEvent.clientX - div1.offsetLeft;
+                disY = ableEvent.clientY - div1.offsetTop;
+
+                // 拖拽
+                if (div1.setCapture) {
+                    //IE
+                    div1.onmousemove = function (ev) {
+                        var ableEvent = ev || event;
+                        var l = ableEvent.clientX - disX;
+                        var t = ableEvent.clientY - disY;
+
+                        // 限制在窗口内，并且能够吸附
+                        if (l < 50) {
+                            l = 0;
+                        } else if (l > div2.offsetWidth - div1.offsetWidth) {
+                            l = div2.offsetWidth - div1.offsetWidth;
+                        }
+
+                        if (t < 50) {
+                            t = 0;
+                        } else if (t > div2.offsetHeight - div1.offsetHeight) {
+                            t = div2.offsetHeight - div1.offsetHeight;
+                        }
+
+                        div1.style.left = l + 'px';
+                        div1.style.top = t + 'px';
+                    };
+
+                    div1.onmouseup = function (ev) {
+
+                        div1.onmousemove = null;
+                        div1.onmouseup = null;
+
+                        div1.releaseCapture();
+                    };
+                    div1.setCapture();
+                } else {
+                    // chrome、firefox
+                    document.onmousemove = function (ev) {
+                        var ableEvent = ev || event;
+                        var l = ableEvent.clientX - disX;
+                        var t = ableEvent.clientY - disY;
+
+                        // 限制在窗口内，并且能够吸附
+                        if (l < 50) {
+                            l = 0;
+                        } else if (l > div2.offsetWidth - div1.offsetWidth) {
+                            l = div2.offsetWidth - div1.offsetWidth;
+                        }
+
+                        if (t < 50) {
+                            t = 0;
+                        } else if (t > div2.offsetHeight - div1.offsetHeight) {
+                            t = div2.offsetHeight - div1.offsetHeight;
+                        }
+
+                        div1.style.left = l + 'px';
+                        div1.style.top = t + 'px';
+                    };
+
+                    document.onmouseup = function (ev) {
+                        document.onmousemove = null;
+                        document.onmouseup = null;
+                    };
+                }
+                return false;
+            };
+
+        };
+    </script>
+</head>
+
+<body>
+    <div id="div2">
+        good luck luck luck
+        <div id="div1">good luck luck luck</div>
+        good luck luck luck
+    </div>
+</body>
+
+</html>
