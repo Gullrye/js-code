@@ -12,13 +12,6 @@
             height: 100px;
             background: red;
         }
-
-        #div2 {
-            position: relative;
-            width: 700px;
-            height: 400px;
-            background: gray;
-        }
     </style>
 
     <script>
@@ -55,19 +48,6 @@
                 var l = ableEvent.clientX - disX;
                 var t = ableEvent.clientY - disY;
 
-                // 限制在窗口内，并且能够吸附
-                if (l < 50) {
-                    l = 0;
-                } else if (l > div2.offsetWidth - div1.offsetWidth) {
-                    l = div2.offsetWidth - div1.offsetWidth;
-                }
-
-                if (t < 50) {
-                    t = 0;
-                } else if (t > div2.offsetHeight - div1.offsetHeight) {
-                    t = div2.offsetHeight - div1.offsetHeight;
-                }
-
                 div1.style.left = l + 'px';
                 div1.style.top = t + 'px';
             }
@@ -86,11 +66,9 @@
 </head>
 
 <body>
-    <div id="div2">
-        good luck luck luck
-        <div id="div1">good luck luck luck</div>
-        good luck luck luck
-    </div>
+    good luck luck luck
+    <div id="div1">good luck luck luck</div>
+    good luck luck luck
 </body>
 
 </html>
